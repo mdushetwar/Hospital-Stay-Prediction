@@ -1,0 +1,41 @@
+# old code
+
+from flask import Flask, render_template, request, jsonify, url_for
+import pickle
+import pandas as pd
+import numpy as np
+
+app = Flask(__name__)
+
+
+xgb_model = pickle.load(open("model.pkl", "rb"))
+encoder = pickle.load(open("encoder.pkl", "rb"))
+scaler = pickle.load(open("scaler.pkl", "rb"))
+
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+
+@app.route("/predict_api", methods=["POST"])
+def predict_api():
+    data = request.json["data"]
+    if type(data) is not dict:
+        return jsonify("Error: Input data is not a dictionary.")
+
+    if type(list(data.values())[0]) is not dict:
+        return jsonify("Error: Input data is not a dictionary of dictionaries.")
+
+    encoder_index = [1, 3, 5, 6, 7, 10, 11, 13]
+    data_to_process = np.array(list((list(data.values())[0].values()))).reshape(1, -1)
+    cat_encoded = encoder.transform(np.array(list((list(data.values())[0].values())))[encoder_index].reshape(1, -1))
+    data_to_process[0][encoder_index] = cat_encoded[0]
+    data_scaled = scaler.transform(data_to_process)
+    output = xgb_model.predict(data_scaled)
+    print(output[0])
+    return jsonify(output[0])
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

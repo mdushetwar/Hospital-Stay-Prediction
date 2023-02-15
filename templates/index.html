@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: lightblue;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-family: Arial, sans-serif;
+      color: navy;
+      text-align: center;
+    }
+
+    form {
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      color: navy;
+      margin: 0 auto;
+      width: 400px;
+      text-align: center;
+    }
+
+    input[type="text"], select {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: navy;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Hospital Stay Predictor</title>
+</head>
+<body>
+  <h1>Hospital Stay Predictor</h1>
+
+<style>
+  form {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    padding: 30px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px gray;
+  }
+
+  label {
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+    width: 45%;
+    text-align: right;
+    margin-right: 20px;
+  }
+
+  input[type="text"], select {
+    padding: 10px;
+    width: 45%;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    display: inline-block;
+  }
+
+  button[type="submit"] {
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: yellow;
+    color: Blue;
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0;
+  }
+</style>
+
+<form action="/predict" method="post">
+    <label for="Hospital_code">Hospital code:</label>
+    <select id="Hospital_code" name="Hospital_code">
+      <option value="select">select...</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+    </select><br>
+
+    <label for="Hospital_type_code">Hospital type code:</label>
+    <select id="Hospital_type_code" name="Hospital_type_code">
+      <option value="select">select...</option>
+      <option value="a">a</option>
+      <option value="b">b</option>
+      <option value="c">c</option>
+      <option value="d">d</option>
+      <option value="e">e</option>
+      <option value="f">f</option>
+      <option value="g">g</option>
+    </select><br>
+
+    <label for="City_Code_Hospital">City code of the hospital:</label>
+    <select id="City_Code_Hospital" name="City_Code_Hospital">
+      <option value="select">select...</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="13">13</option>
+    </select><br>
+
+    <label for="Hospital_region_code">Hospital region code:</label>
+    <select id="Hospital_region_code" name="Hospital_region_code">
+      <option value="select">select...</option>
+      <option value="X">X</option>
+      <option value="Y">Y</option>
+      <option value="Z">Z</option>
+    </select><br>
+
+    <label for="Available_Extra_Rooms_in_Hospital">Available extra rooms in hospital:</label>
+    <input type="text" id="Available_Extra_Rooms_in_Hospital" name="Available_Extra_Rooms_in_Hospital"><br>
+
+    <label for="Department">Department:</label>
+    <select id="Department" name="Department">
+      <option value="select">select...</option>
+      <option value="radiotherapy">radiotherapy</option>
+      <option value="anesthesia">anesthesia</option>
+      <option value="gynecology">gynecology</option>
+      <option value="TB & Chest disease">TB & Chest disease</option>
+      <option value="surgery">surgery</option>
+    </select><br>
+
+    <label for="Ward_Type">Ward type:</label>
+    <select id="Ward_Type" name="Ward_Type">
+      <option value="select">select...</option>
+      <option value="P">P</option>
+      <option value="Q">Q</option>
+      <option value="R">R</option>
+      <option value="S">S</option>
+      <option value="T">T</option>
+      <option value="U">U</option>
+    </select><br>
+
+    <label for="Ward_Facility_Code">Ward facility code:</label>
+    <select id="Ward_Facility_Code" name="Ward_Facility_Code">
+      <option value="select">select...</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <option value="E">E</option>
+      <option value="F">F</option>
+    </select><br>
+
+    <label for="Bed_Grade">Bed grade:</label>
+    <select id="Bed_Grade" name="Bed_Grade">
+      <option value="select">select...</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select><br>
+
+    <label for="City_Code_Patient">City code of the patient:</label>
+    <select id="City_Code_Patient" name="City_Code_Patient">
+      <option value="select">select...</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+      <option value="35">35</option>
+      <option value="36">36</option>
+      <option value="37">37</option>
+      <option value="38">38</option>
+    </select><br>
+
+    <label for="Type_of_Admission">Type of admission:</label>
+    <select id="Type_of_Admission" name="Type_of_Admission">
+      <option value="select">select...</option>
+      <option value="Emergency">Emergency</option>
+      <option value="Trauma">Trauma</option>
+      <option value="Urgent">Urgent</option>
+    </select><br>
+
+    <label for="Severity_of_Illness">Severity of illness:</label>
+    <select id="Severity_of_Illness" name="Severity_of_Illness">
+      <option value="select">select...</option>
+      <option value="Extreme">Extreme</option>
+      <option value="Moderate">Moderate</option>
+      <option value="Minor">Minor</option>
+    </select><br>
+
+    <label for="Visitors_with_Patient">Visitors with patient:</label>
+    <input type="text" id="Visitors_with_Patient" name="Visitors_with_Patient"><br>
+
+    <label for="Age">Age:</label>
+    <select id="Age" name="Age">
+      <option value="select">select...</option>
+      <option value="0-10">0-10</option>
+      <option value="11-20">11-20</option>
+      <option value="21-30">21-30</option>
+      <option value="31-40">31-40</option>
+      <option value="41-50">41-50</option>
+      <option value="51-60">51-60</option>
+      <option value="61-70">61-70</option>
+      <option value="71-80">71-80</option>
+      <option value="81-90">81-90</option>
+      <option value="91-100">91-100</option>
+    </select><br>
+
+    <label for="Admission_Deposit">Admission deposit:</label>
+    <input type="text" id="Admission_Deposit" name="Admission_Deposit"><br>
+
+    <button type="submit">Submit</button>
+</form>

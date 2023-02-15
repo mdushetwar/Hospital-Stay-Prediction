@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Predict Hospital Stay</title>
+    <style>
+      body {
+        background-color: lightcoral; 
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Predicted Hospital Stay</h1>
+    <p>The patient is likely to stay in hospital for {{ prediction }} days.</p>
+    <form action="/" method="get">
+      <button type="submit" class="back-button">Back</button>
+    </form>
+    <style>
+      .back-button {
+        background-color:#4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px; 
+        text-align: center; 
+        text-decoration: none; 
+        display: inline-block;
+        font-size: 16px; 
+        border-radius: 5px; 
+      }
+
+      .back-button:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </body>
+</html>
