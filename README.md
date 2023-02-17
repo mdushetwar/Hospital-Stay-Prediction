@@ -19,3 +19,9 @@ Since the dataset is large, some of the code takes significant amount of time to
 
 During the model development, number of experiments were conducted with data processing. A short summary of these experiments is provided in the Appendix section at the end.
 
+
+### How to run Web-application?
+
+Open app.py file and run it on locally
+
+
